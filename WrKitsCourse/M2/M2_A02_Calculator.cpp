@@ -8,7 +8,7 @@
    ****Implement member function to alocate all setInputs and a new getInputs, put Inputs into array
 */
 
-#include "Calculator_M02.hpp"
+#include "M2_A02_Calculator.hpp"
 
 Calculator_M02::Calculator_M02(string title) {
     setCalculatorTitle(title);
