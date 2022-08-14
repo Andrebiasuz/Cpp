@@ -3,6 +3,7 @@
 */
 #include <iostream>
 #include <string>
+#include <iomanip>      // std::setw
 using namespace std;
 
 
@@ -21,6 +22,7 @@ class Calculator_M02
     int modulo(int num1, int num2);
     void setInputs(int num1, int num2, int num3, int num4, int num5, int num6);
     void getResults();
+    void lineEquation(int i1, int i2, int i3, int i4);
 
 
     private:
