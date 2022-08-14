@@ -3,12 +3,14 @@
     @file Calculator_M02.cpp
     @author André Biasuz, EE. 
     @version 1.0 - 10/08/2022
+    @version 1.1 - 14/08/2022 - Include line equation class
 
    ****Improvements to come: Use inheritance with Calculator class for computations 
    ****Implement member function to alocate all setInputs and a new getInputs, put Inputs into array
 */
 
-#include "M2_A02_Calculator.hpp"
+#include "Calculator_M02.hpp"
+using namespace std;
 
 Calculator_M02::Calculator_M02(string title) {
     setCalculatorTitle(title);
@@ -59,4 +61,23 @@ void Calculator_M02::getResults(){
     cout << input1 << " + " << input2 << " = " << Calculator_M02::sum(input1,input2) << endl;
     cout << input3 << " - " << input4 << " = " << Calculator_M02::substract(input3,input4) << endl;
     cout << input5 << " * " << input6 << " = " << Calculator_M02::multiply(input5,input6) << endl;
+}
+
+
+/* Function lineEquation works as y = Mx + b. 
+    Inputs: i1 = M,  i2 = b, i3 and i4 are the interval of x, e.g [-42,58] 
+    Output: Writes to console as two-row table */
+void Calculator_M02::lineEquation(int i1, int i2, int i3, int i4) {
+
+    float res = 0;
+    
+    cout << "Results for y = " << i1 << "x + " << i2 << " computation: " << endl;
+    cout << endl;
+    cout << setw(5) << "X" << setw(5) << "Y" << endl;
+    
+    for (int j = i3 ; j <= i4 ; j++) {
+        res = i1 * j + i2 ;//
+        cout <<  setw(5) << j << setw(5) << res << endl;
+    }
+       
 }
