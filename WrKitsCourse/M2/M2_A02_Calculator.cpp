@@ -3,10 +3,12 @@
     @file Calculator_M02.cpp
     @author André Biasuz, EE. 
     @version 1.0 - 10/08/2022
-    @version 1.1 - 14/08/2022 - Include line equation class
+    @version 1.1 - 14/08/2022 - A03 - Include line equation class
+    @version 1.2 - 15/08/2022 - A04 - Include calculator class using switch cases
 
-   ****Improvements to come: Use inheritance with Calculator class for computations 
-   ****Implement member function to alocate all setInputs and a new getInputs, put Inputs into array
+   ****Improvements to come: Improve reuseability of all member functions. 
+
+
 */
 
 #include "Calculator_M02.hpp"
@@ -16,14 +18,13 @@ Calculator_M02::Calculator_M02(string title) {
     setCalculatorTitle(title);
 } 
 
-void Calculator_M02::setInputs(int num1, int num2, int num3, int num4, int num5, int num6) {
-        input1 = num1;
-        input2 = num2;
-        input3 = num3;
-        input4 = num4;
-        input5 = num5;
-        input6 = num6;
-}
+void Calculator_M02::set2Inputs() {
+        cin >> num1 >> num2;
+    }
+
+void Calculator_M02::set6Inputs() {
+        cout << num1 << num2 << num3 << num4 << num5 << num6 << endl;
+    }
 
 void Calculator_M02::setCalculatorTitle(string title)
 {
@@ -55,12 +56,12 @@ int Calculator_M02::modulo(int num1, int num2) {
     return num1 % num2; 
 } 
 
-void Calculator_M02::getResults(){
+void Calculator_M02::getResultsA01computation(){
     cout << "Results of computation: " << endl;
     cout << endl;
-    cout << input1 << " + " << input2 << " = " << Calculator_M02::sum(input1,input2) << endl;
-    cout << input3 << " - " << input4 << " = " << Calculator_M02::substract(input3,input4) << endl;
-    cout << input5 << " * " << input6 << " = " << Calculator_M02::multiply(input5,input6) << endl;
+    cout << num1 << " + " << num2 << " = " << Calculator_M02::sum(num1,num2) << endl;
+    cout << num3 << " - " << num4 << " = " << Calculator_M02::substract(num3,num4) << endl;
+    cout << num5 << " * " << num6 << " = " << Calculator_M02::multiply(num5,num6) << endl;
 }
 
 
@@ -80,4 +81,51 @@ void Calculator_M02::lineEquation(int i1, int i2, int i3, int i4) {
         cout <<  setw(5) << j << setw(5) << res << endl;
     }
        
+}
+
+void Calculator_M02::GetSwitchResults() {
+    int i1, i2;
+    float res = 0;
+    char opt;
+    int scape = 0;
+
+    do {
+    cout << "Enter 2 inputs for computation: ";
+    Calculator_M02::set2Inputs();
+    cout << endl;
+    
+    i1 = num1;
+    i2 = num2;
+    cout << "Enter desired arithmetic operation:  " ;
+    cin >> opt; 
+    cout << endl;
+
+    
+    switch(opt) {
+        
+        case '+':
+            res = Calculator_M02::sum(i1, i2);
+            break;
+        case '-':
+            res = Calculator_M02::substract(i1, i2);
+            break;    
+        case '/':
+            res = Calculator_M02::divide(i1, i2);
+            break;    
+        case '*':
+            res = Calculator_M02::multiply(i1, i2);
+            break;        
+        case '%':
+            res = Calculator_M02::modulo(i1, i2);
+            break;
+        default:
+            cout << "Invalid character" << endl;
+    }
+        cout << "Result is : " << res << endl;
+
+        cout << "Type 0 to scape or any number to repeat: " ;
+        cin >> scape;
+        cout << endl;
+        
+        } while(scape != 0);
 }
